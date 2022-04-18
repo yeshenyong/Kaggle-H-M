@@ -1,0 +1,159 @@
+index_group_name  index_name
+Baby/Children     Baby Sizes 50-98                   8875
+                  Children Accessories, Swimwear     4615
+                  Children Sizes 134-170             9214
+                  Children Sizes 92-140             12007
+Divided           Divided                           15149
+Ladieswear        Ladies Accessories                 6961
+                  Ladieswear                        26001
+                  Lingeries/Tights                   6775
+Menswear          Menswear                          12553
+Sport             Sport                              3392
+Name: article_id, dtype: int64
+product_group_name     product_type_name
+Accessories            Accessories set                 7
+                       Alice band                      6
+                       Baby Bib                        3
+                       Bag                          1280
+                       Beanie                         56
+                       Belt                          458
+                       Bracelet                      180
+                       Braces                          3
+                       Bucket hat                      7
+                       Cap                            13
+                       Cap/peaked                    573
+                       Dog Wear                       20
+                       Earring                      1159
+                       Earrings                       11
+                       Eyeglasses                      2
+                       Felt hat                       10
+                       Giftbox                        15
+                       Gloves                        367
+                       Hair clip                     244
+                       Hair string                   238
+                       Hair ties                      24
+                       Hair/alice band               854
+                       Hairband                        2
+                       Hat/beanie                   1349
+                       Hat/brim                      396
+                       Headband                        1
+                       Necklace                      581
+                       Other accessories            1034
+                       Ring                          240
+                       Scarf                        1013
+                       Soft Toys                      46
+                       Straw hat                       6
+                       Sunglasses                    621
+                       Tie                           141
+                       Umbrella                       26
+                       Wallet                         77
+                       Watch                          73
+                       Waterbottle                    22
+Bags                   Backpack                        6
+                       Bumbag                          1
+                       Cross-body bag                  5
+                       Shoulder bag                    2
+                       Tote bag                        2
+                       Weekend/Gym bag                 9
+Cosmetic               Chem. cosmetics                 3
+                       Fine cosmetics                 46
+Fun                    Toy                             2
+Furniture              Side table                     13
+Garment Full body      Costumes                       90
+                       Dress                       10362
+                       Dungarees                     309
+                       Garment Set                  1320
+                       Jumpsuit/Playsuit            1147
+                       Outdoor overall                64
+Garment Lower body     Leggings/Tights              1878
+                       Outdoor trousers              130
+                       Shorts                       3939
+                       Skirt                        2696
+                       Trousers                    11169
+Garment Upper body     Blazer                       1110
+                       Blouse                       3979
+                       Bodysuit                      913
+                       Cardigan                     1550
+                       Coat                          460
+                       Hoodie                       2356
+                       Jacket                       3940
+                       Outdoor Waistcoat             154
+                       Polo shirt                    449
+                       Shirt                        3405
+                       Sweater                      9302
+                       T-shirt                      7904
+                       Tailored Waistcoat             73
+                       Top                          4155
+                       Vest top                     2991
+Garment and Shoe care  Clothing mist                   1
+                       Sewing kit                      1
+                       Stain remover spray             2
+                       Washing bag                     1
+                       Wood balls                      1
+                       Zipper head                     3
+Interior textile       Blanket                         1
+                       Cushion                         1
+                       Towel                           1
+Items                  Dog wear                        7
+                       Keychain                        1
+                       Mobile case                     4
+                       Umbrella                        3
+                       Wireless earphone case          2
+Nightwear              Night gown                    171
+                       Pyjama bottom                 220
+                       Pyjama jumpsuit/playsuit      388
+                       Pyjama set                   1120
+Shoes                  Ballerinas                    372
+                       Bootie                         31
+                       Boots                        1028
+                       Flat shoe                     165
+                       Flat shoes                     10
+                       Flip flop                     125
+                       Heeled sandals                202
+                       Heels                          22
+                       Moccasins                       4
+                       Other shoe                    395
+                       Pre-walkers                     1
+                       Pumps                         188
+                       Sandals                       757
+                       Slippers                      249
+                       Sneakers                     1621
+                       Wedge                         113
+Socks & Tights         Leg warmers                     7
+                       Socks                        1889
+                       Underwear Tights              546
+Stationery             Marker pen                      5
+Swimwear               Bikini top                    850
+                       Sarong                         66
+                       Swimsuit                      662
+                       Swimwear bottom              1307
+                       Swimwear set                  192
+                       Swimwear top                   50
+Underwear              Bra                          2212
+                       Bra extender                    1
+                       Kids Underwear top             96
+                       Long John                      30
+                       Nipple covers                  19
+                       Robe                          136
+                       Underdress                     20
+                       Underwear body                174
+                       Underwear bottom             2748
+                       Underwear corset                7
+                       Underwear set                  47
+Underwear/nightwear    Sleep Bag                       6
+                       Sleeping sack                  48
+Unknown                Unknown                       121
+Name: article_id, dtype: int64
+n of unique prod_name: 45875
+n of unique product_type_name: 131
+n of unique product_group_name: 19
+n of unique graphical_appearance_name: 30
+n of unique colour_group_name: 50
+n of unique perceived_colour_value_name: 8
+n of unique perceived_colour_master_name: 20
+n of unique department_name: 250
+n of unique index_name: 10
+n of unique index_group_name: 5
+n of unique section_name: 56
+n of unique garment_group_name: 21
+n of unique detail_desc: 43404
