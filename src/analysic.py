@@ -75,15 +75,72 @@ def customer_analysic():
     # There are no duplicates(重复) in customer
     print(customers.shape[0] - customers['customer_id'].nunique())
 
+    # 获得邮编相同customers
+    data_postal = customers.groupby('postal_code', as_index=False)\
+        .count().sort_values('customer_id', ascending=False)
 
+    print(data_postal.head())
+
+    # Ages, club_member_status are different, like customer_ids.
+    print(customers[customers['postal_code']=='2c29ae653a9282cce4151bd87643c90' \
+                                '7644e09541abc28ae87dea0d1f6603b1c'].head())
+
+    # The Most common age is about 21-23
+    sns.set_style("darkgrid")
+    f, ax = plt.subplots(figsize=(10, 5))
+    ax = sns.histplot(data=customers, x='age', bins=50, color='orange')
+    ax.set_xlabel('Distribution of the customers age')
+    plt.show()
+
+    # Status in H&M club. Almost every customer has an active club status,
+    # some of them begin to activate it (pre-create).
+    # A tiny part of customers abandoned the club.
+    sns.set_style('darkgrid')
+    f, ax = plt.subplots(figsize=(10, 5))
+    ax = sns.histplot(data=customers, x='club_member_status', color='orange')
+    ax.set_xlabel('Distribution of club member status')
+    plt.show()
+
+    # Monthly Regularly None
+    sns.set_style('darkgrid')
+    f, ax = plt.subplots(figsize=(10, 5))
+    ax = sns.histplot(data=customers, x='fashion_news_frequency', color='orange')
+    ax.set_xlabel('Distribution of fashion_news_frequency')
+    plt.show()
+
+    # Here we have three types for No DATA. Let's unite these values.
+    print(customers['fashion_news_frequency'].unique())
+    # array(['NONE', 'Regularly', nan, 'Monthly', 'None'], dtype=object)
+    # 除了isin 的数据, 其他都是None
+    customers.loc[~customers['fashion_news_frequency'].isin
+        (['Regularly', 'Monthly']), 'fashion_news_frequency'] = 'None'
+    print(customers['fashion_news_frequency'].unique())
+    # array(['None', 'Regularly', 'Monthly'], dtype=object)
+    pie_data = customers[['customer_id', 'fashion_news_frequency']].groupby('fashion_news_frequency').count()
+
+    # Customers prefer not to get any messages about the current news.
+    sns.set_style("darkgrid")
+    f, ax = plt.subplots(figsize=(10, 5))
+    # ax = sns.histplot(data=customers, x='fashion_news_frequency', color='orange')
+    # ax = sns.pie(data=customers, x='fashion_news_frequency', color='orange')
+    colors = sns.color_palette('pastel')
+    ax.pie(pie_data.customer_id, labels=pie_data.index, colors=colors)
+    ax.set_facecolor('lightgrey')
+    ax.set_xlabel('Distribution of fashion news frequency')
+    plt.show()
+
+
+def transaction_analysic():
+    pass
 
 
 if __name__ == '__main__':
     # 让我们看看表格，并尝试获得一些关于内部数据的结果。
-    articles = pd.read_csv("../../H&M competition/articles.csv")
+    # articles = pd.read_csv("../../H&M competition/articles.csv")
     customers = pd.read_csv("../../H&M competition/customers.csv")
     # transaction = pd.read_csv("../../H&M competition/transactions_train.csv")
 
-    articles_analysic()
-
+    # articles_analysic()
+    customer_analysic()
+    transaction_analysic()
 
