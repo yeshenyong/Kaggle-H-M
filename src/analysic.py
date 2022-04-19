@@ -131,16 +131,69 @@ def customer_analysic():
 
 
 def transaction_analysic():
-    pass
+    """
+    t_dat : A unique identifier of every customer
+    customer_id : A unique identifier of every customer (in customers table)
+    article_id : A unique identifier of every article (in articles table)
+    price : Price of purchase
+    sales_channel_id : 1 or 2
+    :return: void
+    """
+    print(transaction.head())
 
+    # Here we see outliers for price.
+    pd.set_option('display.float_format', '{:.4f}'.format)
+    print(transaction.describe()['price'])  # series describe
+
+    print(transaction.head())
+
+    # price Distribution
+    sns.set_style("darkgrid")
+    f, ax = plt.subplots(figsize=(10, 5))
+    ax = sns.boxplot(data=transaction, x='price', color='orange')
+    ax.set_xlabel('Price outliers')
+    plt.show()
+
+    # Top 10 customers by num of transactions
+    transaction_byid = transaction.groupby('customer_id').count()
+    print(transaction_byid.sort_values(by='price', ascending=False)['price'][:10])
+
+    # Get subset from articles and merge it to transactions.
+    articles_for_merge = articles[['article_id', 'prod_name', 'product_type_name',
+                                   'product_group_name', 'index_name']]
+    articles_for_merge = transaction[['customer_id', 'article_id', 'price',
+                                      't_dat']].merge(articles_for_merge,
+                                                      on='article_id', how='left')
+    # Here we see outliers for group name prices.
+    # Lower/Upper/Full body have a huge price variance.
+    sns.set_style("darkgrid")
+    f, ax = plt.subplots(figsize=(25, 18))
+    _ = articles_for_merge[articles_for_merge['product_group_name'] == 'Accessories']
+    ax = sns.boxplot(data=_, x='price', y='product_type_name')
+    ax.set_xlabel('Price outliers', fontsize=22)
+    ax.set_ylabel('Index names', fontsize=22)
+    ax.xaxis.set_tick_params(labelsize=22)
+    ax.yaxis.set_tick_params(labelsize=22)
+    del _
+    plt.show()
+
+    # The index with the highest mean price is Ladieswear.
+    # With the lowest - children.
+    articles_index = articles_for_merge[['index_name', 'price']].groupby('index_name').mean()
+    sns.set_style("darkgrid")
+    f, ax = plt.subplots(figsize=(10, 5))
+    ax = sns.barplot(x=articles_index.price, y=articles_index.index, color='orange', alpha=0.8)
+    ax.set_xlabel('Price by index')
+    ax.set_ylabel('Index')
+    plt.show()
 
 if __name__ == '__main__':
     # 让我们看看表格，并尝试获得一些关于内部数据的结果。
-    # articles = pd.read_csv("../../H&M competition/articles.csv")
+    articles = pd.read_csv("../../H&M competition/articles.csv")
     customers = pd.read_csv("../../H&M competition/customers.csv")
-    # transaction = pd.read_csv("../../H&M competition/transactions_train.csv")
+    # transaction = pd.read_csv("../../H&M competition/transactions_train.csv") # too large
 
-    # articles_analysic()
+    articles_analysic()
     customer_analysic()
-    transaction_analysic()
+    # transaction_analysic()
 
